@@ -95,8 +95,8 @@ def prever_fraude(transacao: Transacao, autorizado: None = Depends(verificar_api
         try:
             explicacao = gerar_explicacao(dados_dict, probabilidade, top_features)
         except Exception as e:
+            print(f"Erro ao gerar explicação: {e}")
             explicacao = "Não foi possível gerar explicação no momento."
-    
     return {
         "probabilidade": round(float(probabilidade), 4),
         "decisao": decisao,
